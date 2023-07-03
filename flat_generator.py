@@ -5,12 +5,15 @@ import types
 
 
 def flat_generator(list_of_lists):
-    ...
-    yield
-    ...
+    items = sum(list_of_lists, [])
+    items_counter = 0
+
+    while items_counter < len(items):
+        yield items[items_counter]
+        items_counter += 1
 
 
-def test_2():
+def func():
     list_of_lists_1 = [
         ['a', 'b', 'c'],
         ['d', 'e', 'f', 'h', False],
@@ -21,6 +24,7 @@ def test_2():
             flat_generator(list_of_lists_1),
             ['a', 'b', 'c', 'd', 'e', 'f', 'h', False, 1, 2, None]
     ):
+        print(check_item)
         assert flat_iterator_item == check_item
 
     assert list(flat_generator(list_of_lists_1)) == ['a', 'b', 'c', 'd', 'e', 'f', 'h', False, 1, 2, None]
@@ -29,4 +33,4 @@ def test_2():
 
 
 if __name__ == '__main__':
-    test_2()
+    func()
